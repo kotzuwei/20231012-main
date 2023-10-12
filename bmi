@@ -1,0 +1,39 @@
+var readline = require("readline-sync");
+
+do {
+    var height = readline.question("Please enter ur height (cm)?");
+   
+    if(!isNaN(height) && height<=230 && height>30)
+        break;
+    else{
+        console.log("Height must between 30 and 230cm!")
+        continue;
+    }    
+}while(true);
+
+while(true){
+    var weight = readline.question("Please enter ur weight (kg)?");
+    if(!isNaN(weight) && weight<=500 && weight>10)
+        break;
+    else{
+        continue;
+    }   
+}
+console.log("height:"+height);
+console.log("weight:"+weight);
+
+height /= 100;
+var eBMI = weight/(height*height);
+var BMI = eBMI.toFixed(2); //函數toFixed():保留2位小數
+
+if(BMI < 18.5){
+    console.log("BMI:" + BMI + " is underweight.")
+}else if(BMI >= 18.5 && BMI < 24){
+    console.log("BMI:" + BMI + " is healthy weight.")
+}else if(BMI >= 24 && BMI < 27){
+    console.log("BMI:" + BMI + " is Mild obesity.")
+}else if(BMI >= 30 && BMI < 35){
+    console.log("BMI:" + BMI + " is Moderately obese.")
+}else{
+    console.log("BMI:" + BMI + " is severe obesity.")
+}
