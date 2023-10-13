@@ -1,5 +1,5 @@
 var readline = require("readline-sync");
-
+ 
 do {
     var height = readline.question("Please enter ur height (cm)?");
    
@@ -28,12 +28,13 @@ var BMI = eBMI.toFixed(2); //函數toFixed():保留2位小數
 
 if(BMI < 18.5){
     console.log("BMI:" + BMI + " is underweight.")
-}else if(BMI >= 18.5 && BMI < 24){
+}else if(BMI < 24){
     console.log("BMI:" + BMI + " is healthy weight.")
-}else if(BMI >= 24 && BMI < 27){
+}else if(BMI < 27){
     console.log("BMI:" + BMI + " is Mild obesity.")
-}else if(BMI >= 30 && BMI < 35){
+}else if(BMI < 35){
     console.log("BMI:" + BMI + " is Moderately obese.")
 }else{
     console.log("BMI:" + BMI + " is severe obesity.")
 }
+
