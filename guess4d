@@ -6,3 +6,5 @@ var rand = Math.floor(Math.random() * 11); //0-10
 var temp = ans[0];
 
 
+
+
