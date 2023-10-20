@@ -24,25 +24,40 @@ ans.sort(function(a, b){ return Math. random()-0.5 });
 console.log(ans)
 
 //input
-
-var counterA = 0, counterB = 0;
 for(var i = 0; i<7; i++){
+    var counterA = 0, counterB = 0;
     do {
         var guess = readline.question("Please guess 4 digits?");
-    
         if(!isNaN(guess) && guess.length == 4)
             break;
         else{
             console.log("4 digits!")
             continue;
         }    
-    }while(true);    
+    }while(true);
+    
+    for(let ans_idx = 0; ans_idx < 4; ans_idx++){
+        for(let guess_idx = 0; guess_idx < 4; guess_idx++){
+            if(guess[guess_idx] == ans[ans_idx]){ //guess=ans
+                if(guess_idx == ans_idx){ //guess索引值=ans索引值
+                    counterA++;
+                }else{
+                    counterB++;
+                }
+
+            }
+
+        }
+    }
+    console.log("your guess:" + counterA + "A" + counterB + "B")
+
+    if(counterA == 4){
+        console.log("You win!");
+        break;
+    }
+
 }
 
-
-if(counterA == 4){
-    console.log("You win!");
-}
 
 if(counterA < 4){
     console.log("You loose!");
