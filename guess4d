@@ -1,10 +1,49 @@
 var readline = require("readline-sync");
 
 var ans = [0,1,2,3,4,5,6,7,8,9];
+for(var i = 0; i < 4; i++){
+    var rand = Math.floor(Math.random() * 10); //產生0-9ㄉ亂數
+    var temp = ans[i];
+    ans[i] = ans[rand];
+    ans[rand] = temp;
+    //method 2
+    //ans[i] = ans[i] + ans[rand];
+    //ans[rand] = ans[i] - ans[rand];
+    //ans[i] = ans[i] - ans[rand];
 
-var rand = Math.floor(Math.random() * 11); //0-10
-var temp = ans[0];
+    //a=5 b=7
+    //a = a+b; //a=12
+    //b = a-b; //b=5
+    //a = a-b; //a=7
+}
+
+var ans = [0,1,2,3,4,5,6,7,8,9];
+ans.sort(function(a, b){ return Math. random()-0.5 });
+
+console.log(ans)
+
+//input
+
+var counterA = 0, counterB = 0;
+for(var i = 0; i<7; i++){
+    do {
+        var guess = readline.question("Please guess 4 digits?");
+    
+        if(!isNaN(guess) && guess.length == 4)
+            break;
+        else{
+            console.log("4 digits!")
+            continue;
+        }    
+    }while(true);    
+}
 
 
+if(counterA == 4){
+    console.log("You win!");
+}
 
+if(counterA < 4){
+    console.log("You loose!");
+}
 
