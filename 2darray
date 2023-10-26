@@ -1,10 +1,21 @@
-let row = 6, col = 6;
+var readline = require("readline-sync");
+
+let row = 9, col = 7;
 let dynamic2d = [];
-for(let row_idx = 0; row_idx < row; row_idx++){
+for(let row_idx = 0; row_idx < row; row_idx++){ //控制行ㄉ索引
     dynamic2d.push([]); //dynamic2d[[],[],[],[],[],[]]
-    for(let col_idx = 0; col_idx < col; col_idx++){
-        dynamic2d[row_idx].push(row_idx + "," + col_idx);
+    for(let col_idx = 0; col_idx < col; col_idx++){ //控制欄ㄉ索引
+        //dynamic2d[row_idx].push(row_idx * col_idx); //逐行丟數字，一行填完再往下
+        dynamic2d[row_idx].push(Math.floor(Math.random()*row)+","+Math.floor(Math.random()*col))
     }
 }
 
 console.log(dynamic2d)
+
+var num1 = readline.question("Please enter number1:");
+var num2 = readline.question("Please enter number2:");
+
+console.log(dynamic2d[num1][num2])
+
+
+

@@ -19,7 +19,8 @@ for(var i = 0; i < 4; i++){
 
 
 var ans = [0,1,2,3,4,5,6,7,8,9];
-ans.sort(function(a, b){ return Math. random()-0.5 });
+ans.sort(function(a, b){ return b - a}); //b-a：大排到小
+//ans.sort(function(a, b){ return Math. random()-0.5 }); //Math.random()-0.5：亂數排列
 
 console.log(ans)
 
