@@ -2,20 +2,50 @@ var readline = require("readline-sync");
 
 let row = 9, col = 7;
 let dynamic2d = [];
+let visited = [];
+var count = 0;
 for(let row_idx = 0; row_idx < row; row_idx++){ //控制行ㄉ索引
     dynamic2d.push([]); //dynamic2d[[],[],[],[],[],[]]
+    visited.push
     for(let col_idx = 0; col_idx < col; col_idx++){ //控制欄ㄉ索引
         //dynamic2d[row_idx].push(row_idx * col_idx); //逐行丟數字，一行填完再往下
         dynamic2d[row_idx].push(Math.floor(Math.random()*row)+","+Math.floor(Math.random()*col))
+        visited[row_idx].push[0]; //flag
     }
 }
 
-console.log(dynamic2d)
+//input start point
+let startR;
+let startC;
+do{
+    startR = parseInt(readline.question("row:"));
+    startC = parseInt(readline.question("col:"));
 
-var num1 = readline.question("Please enter number1:");
-var num2 = readline.question("Please enter number2:");
+    if(startR >= 0 && startR < row && startC >= 0 && startC <col){
+        break;
+    }else{
+        console.log("0<= Row <"+row+", 0<= Col <"+col)
+        continue;
+    }
 
-console.log(dynamic2d[num1][num2])
+}while(true)
+    
+
+//to visit
+//set flag=>1
+//if flag==1 then game over
+
+while(true){
+
+    if(visited[startR][startC] == 1){
+        console.log("game over")
+    }
+
+
+
+
+
+}
 
 
 
