@@ -3,14 +3,13 @@ var readline = require("readline-sync");
 let row = 9, col = 7;
 let dynamic2d = [];
 let visited = [];
-var count = 0;
 for(let row_idx = 0; row_idx < row; row_idx++){ //控制行ㄉ索引
     dynamic2d.push([]); //dynamic2d[[],[],[],[],[],[]]
-    visited.push
+    visited.push([]);
     for(let col_idx = 0; col_idx < col; col_idx++){ //控制欄ㄉ索引
         //dynamic2d[row_idx].push(row_idx * col_idx); //逐行丟數字，一行填完再往下
         dynamic2d[row_idx].push(Math.floor(Math.random()*row)+","+Math.floor(Math.random()*col))
-        visited[row_idx].push[0]; //flag
+        visited[row_idx].push(0); //flag
     }
 }
 
@@ -34,17 +33,25 @@ do{
 //to visit
 //set flag=>1
 //if flag==1 then game over
-
+let count = 0;
 while(true){
 
     if(visited[startR][startC] == 1){
-        console.log("game over")
+        console.log("game over:( , Num of vistied:" +count)
+        break;
+    }else{
+        visited[startR][startC] = 1;
+        count++;
+        //next point
+        // startR =  parseInt(dynamic2d[startR][startC].split(",")[0]);
+        // startC =  parseInt(dynamic2d[startR][startC].split(",")[1]); //此寫法原本startRㄉ值會被蓋掉
+
+        let next = dynamic2d[startR][startC];
+        startR = parseInt(next.split(",")[0]);
+        startC = parseInt(next.split(",")[1]);
+        console.log("visit:" +startR+ "," +startC);
+
     }
-
-
-
-
-
 }
 
 
