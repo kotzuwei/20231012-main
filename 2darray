@@ -26,7 +26,6 @@ do{
         console.log("0<= Row <"+row+", 0<= Col <"+col)
         continue;
     }
-
 }while(true)
     
 
@@ -37,7 +36,7 @@ let count = 0;
 while(true){
 
     if(visited[startR][startC] == 1){
-        console.log("game over:( , Num of vistied:" +count)
+        console.log("game over:( , Number of vistied:" +count)
         break;
     }else{
         visited[startR][startC] = 1;
