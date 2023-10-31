@@ -8,7 +8,7 @@ for(let row_idx = 0; row_idx < row; row_idx++){ //控制行ㄉ索引
     visited.push([]);
     for(let col_idx = 0; col_idx < col; col_idx++){ //控制欄ㄉ索引
         //dynamic2d[row_idx].push(row_idx * col_idx); //逐行丟數字，一行填完再往下
-        dynamic2d[row_idx].push(Math.floor(Math.random()*row)+","+Math.floor(Math.random()*col))
+        dynamic2d[row_idx].push(Math.floor(Math.random()*row)+","+Math.floor(Math.random()*col)) //亂數產生(0-8,0-6)
         visited[row_idx].push(0); //flag
     }
 }
