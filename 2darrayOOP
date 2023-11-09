@@ -4,11 +4,11 @@ var readline = require("readline-sync");
 //define Point class
 class Point{
    //constructor 
-   constructor(_row, _col){
+   constructor(_row, _col){ //初始化point物件的屬性_row,col，接受兩參數 初始化點的位置
     //attribute
     if(_row>=0 && _row<9 && _col>=0 && _col<7){
-        this.row = _row;
-        this.col = _col;
+        this.row = _row; //thisㄉrow屬性的值 = _row
+        this.col = _col; //thisㄉcol屬性的值 = _col
     }else{
         this.row = null;
         this.col = null;
@@ -19,13 +19,12 @@ class Point{
       console.log("("+this.row+", "+this.col+")");
    }
 }
-var p = new Point(15,3);//呼叫Point類別的建構函數，傳入15,3
-var p2 = new Point(6,2)
+
 
 //dynamic generate 2d array
 let row=9, col=7;
 let dynamic2d = [];
-let visited=[]
+let visited=[];
 for (let row_idx = 0; row_idx < row; row_idx++) {
     dynamic2d.push([]);//dynamic2d[[],[],[],[],[],[]]
     visited.push([]);
@@ -38,6 +37,7 @@ for (let row_idx = 0; row_idx < row; row_idx++) {
     }
     
 }
+
 //input start point
 let startR;
 let startC;
@@ -47,11 +47,12 @@ do{
     if(startR>=0 && startR< row && startC>=0 && startC < col){
         break;
     }else{
-        console.log("0<= Row <"+row+", 0<= Col <"+col);
+        console.log("0 <= Row < 9"+row+", 0 <= Col < 7"+col);
         continue;
     }
 }
 while(true);
+
 
 let numVistit=0;
 //to visit
@@ -67,9 +68,9 @@ while(true){
         //next point
         // startR =  parseInt(dynamic2d[startR][startC].split(",")[0]);
         // startC =  parseInt(dynamic2d[startR][startC].split(",")[1]);
-        let next = dynamic2d[startR][startC];
-        startR = next.row; //= this.row屬性ㄉ值
-        startC = next.col; //= this.col屬性ㄉ值
+        let next = dynamic2d[startR][startC]; //(row,col)
+        startR = next.row; //= next的row屬性ㄉ值
+        startC = next.col; //= next的col屬性ㄉ值
         // console.log("Visit: "+startR+", "+startC);
         next.print();
     }
