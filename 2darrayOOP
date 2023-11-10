@@ -16,7 +16,7 @@ class Point{
    }
    
    print(){
-      console.log("("+this.row+", "+this.col+")");
+      console.log("("+this.row+", "+this.col+")"); //this.row,this.col是Point物件實例的屬性，this代表此實例
    }
 }
 

@@ -4,7 +4,7 @@ function bracketMatch(inputString){ //input一字串,output是否正確
     var Bracket = {'{':'}', '[':']', '(':')', '<':'>'}; //儲存左右括弧的對應關係
     var flag = true; //紀錄有無match
     //var currentChar=inputString[0];//method 1
-    var currentChar=inputString.charAt(0); //method 2
+    var currentChar=inputString.charAt(0); //method 2 =字串索引值0的位子
 
     //loop
     while(currentChar != ''){
