@@ -5,7 +5,7 @@ for(var i = 0; i < 4; i++){
     var rand = Math.floor(Math.random() * 10); //產生0-9ㄉ亂數
     var temp = ans[i];
     ans[i] = ans[rand];
-    ans[rand] = temp;
+    ans[rand] = temp; //交換ans[i]與ans[rand]
     //method 2
     //ans[i] = ans[i] + ans[rand];
     //ans[rand] = ans[i] - ans[rand];
@@ -45,9 +45,7 @@ for(var i = 0; i<7; i++){
                 }else{
                     counterB++;
                 }
-
             }
-
         }
     }
     console.log("your guess:" + counterA + "A" + counterB + "B")
@@ -56,11 +54,11 @@ for(var i = 0; i<7; i++){
         console.log("You win!");
         break;
     }
-
+    if(counterA < 4){
+        console.log("You loose!");
+    }
 }
 
 
-if(counterA < 4){
-    console.log("You loose!");
-}
+
 

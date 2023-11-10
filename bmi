@@ -22,7 +22,7 @@ while(true){
 console.log("height:"+height);
 console.log("weight:"+weight);
 
-height /= 100;
+height /= 100; //169 → 1.69
 var eBMI = weight/(height*height);
 //var bmi = weight/(Math.pow(height/100,2)); //bmi = w / (h*2) 
 var BMI = eBMI.toFixed(2); //函數toFixed():保留2位小數
