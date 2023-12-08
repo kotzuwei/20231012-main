@@ -39,7 +39,32 @@ Life.prototype.calcNeighbor = function(row, col){ //計算該細胞鄰居的數�
     count += this.statusAt(row+1, col+1)//right bottom
     return count;
 }
+Life.prototype.update = function(){ //更新細胞狀態
+    //copy of grid for next generation
+    //var nextGrid=this.grid; //same memory
+    //grid先轉成字串再轉成物件，複製到nextGrid
+    var nextGrid = JSON.parse(JSON.stringify(this.grid)); //parse:解析JSON字串並轉成js物件
+    // var kid= {age:5, hight:170}
+    // var kid1 = kid
+    var count=0;
+    for (let row = 0; row < this.row; row++) {
+        for (let col = 0; col < this.col; col++) {
+          count = this.calcNeighbor(row, col); //get鄰居數量
+          //update LIVE=>DEAD
+          if(this.statusAt(row,col) == LIVE && (count<2 || count>3)){
+            nextGrid[row][col] = DEAD;
+          }
+          //update DEAD=> LIVE 
+          if(this.statusAt(row,col) == DEAD && count==3){
+            nextGrid[row][col] = LIVE;
+          }
+        }
+    }
 
+    //update this.grid
+    this.grid = nextGrid;
+    //gc() //garbage collection
+}
 
 
 var game1 = new Life(3,3); //3*3的遊戲大小
@@ -50,4 +75,7 @@ game1.grid[1][2]=LIVE;
 //測試計算鄰居數量的函數
 console.log("(1,1):"+game1.calcNeighbor(1,1));
 console.log("(2,0):"+game1.calcNeighbor(2,0));
+game1.update();
+console.log(game1.grid)
 //var game2 = new Life(30,30);
+
