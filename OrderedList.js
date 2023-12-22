@@ -5,29 +5,43 @@ class OrderedList {
 }
 OrderedList.prototype.insert = function (item) {
     //bsearch
-    //跟底下bsearch雷同
 
-    //sequential search
-    var pos = 0;
-    for (; pos < this.data.length; pos++) {
-        if (item < this.data[pos])
+    var start=0, end=this.data.length-1, 
+        mid=Math.floor((start+end)/2), pos
+    while(start<=end){
+        mid = Math.floor((start+end)/2);
+        if(item == this.data[mid]){
+            pos = mid;
             break;
-        else
-            pos++;
+        }else if(item < this.data[mid]){
+            end = mid-1;
+        }else{
+            start = mid+1;
+        }
     }
+    if(start > end)
+      pos = mid;
+    //sequential search
+    // var pos = 0;
+    // for (; pos < this.data.length; pos++) {
+    //     if (item < this.data[pos])
+    //         break;
+    //     // else
+    //     //     pos++;
+    // }
     this.data.splice(pos,0,item)
 }
 
-OrderedList.prototype.bSearch(key);{
-    var start=0, end=this.data.length-1, mid;
+OrderedList.prototype.bSearch  = function(key){
+    var start=0, end=this.data.length-1, mid
     while(start<=end){
         mid = Math.floor((start+end)/2);
         if(key == this.data[mid]){
             return mid;
         }else if(key < this.data[mid]){
-            end = mid;
+            end = mid-1;
         }else{
-            start = mid;
+            start = mid+1;
         }
     }
     return -1;
@@ -37,3 +51,12 @@ var myOL = new OrderedList();
 myOL.insert(5);
 myOL.insert(2);
 myOL.insert(6);
+myOL.insert(19)
+myOL.insert(15)
+myOL.insert(11)
+myOL.insert(13)
+myOL.insert(8)
+myOL.insert(9)
+myOL.insert(7)
+
+console.log(myOL.bSearch(9))
