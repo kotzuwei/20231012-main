@@ -24,10 +24,11 @@ ans.sort(function(a, b){ return b - a}); //b-a：大排到小
 
 console.log(ans)
 
-//input
+//for迴圈總共跑7次，讓使用者猜數字
 for(var i = 0; i<7; i++){
     var counterA = 0, counterB = 0;
     do {
+        //使用者猜的是數字&是4個數字，離開
         var guess = readline.question("Please guess 4 digits?");
         if(!isNaN(guess) && guess.length == 4)
             break;
@@ -38,6 +39,7 @@ for(var i = 0; i<7; i++){
     }while(true);
     
     for(let ans_idx = 0; ans_idx < 4; ans_idx++){
+        //if guess = ans → counterA++（猜對ㄌ）
         for(let guess_idx = 0; guess_idx < 4; guess_idx++){
             if(guess[guess_idx] == ans[ans_idx]){ //guess=ans
                 if(guess_idx == ans_idx){ //guess索引值=ans索引值
@@ -49,8 +51,8 @@ for(var i = 0; i<7; i++){
         }
     }
     console.log("your guess:" + counterA + "A" + counterB + "B")
-
-    if(counterA == 4){
+    
+    if(counterA == 4){ //4A → 顯示你贏ㄌ，<4A → 顯示你輸ㄌ
         console.log("You win!");
         break;
     }

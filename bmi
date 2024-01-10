@@ -1,8 +1,10 @@
 var readline = require("readline-sync");
  
 do {
+    //讓使用者輸入身高及體重
     var height = readline.question("Please enter ur height (cm)?");
    
+    //防呆機制 輸入錯誤則重新輸入，直到對為止
     if(!isNaN(height) && height<=230 && height>30)
         break;
     else{
@@ -19,6 +21,7 @@ while(true){
         continue;
     }   
 }
+//輸出使用者輸入的身高體重
 console.log("height:"+height);
 console.log("weight:"+weight);
 
@@ -27,6 +30,7 @@ var eBMI = weight/(height*height);
 //var bmi = weight/(Math.pow(height/100,2)); //bmi = w / (h*2) 
 var BMI = eBMI.toFixed(2); //函數toFixed():保留2位小數
 
+//依計算出的bmi分類
 if(BMI < 18.5){
     console.log("BMI:" + BMI + " is underweight.")
 }else if(BMI < 24){

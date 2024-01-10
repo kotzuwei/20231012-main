@@ -1,11 +1,12 @@
 var ans = Math.floor(Math.random() * 11);//0-11 →floor→ 0-10
 console.log(ans);
 
-var readline = require("readline-sync");
+var readline = require("readline-sync");//使用別人ㄉ套件require (“套件名稱”）
 
 // var userName = readline.question('May I have your name? ');
 // console.log('Hi ' + userName + '!');
 do {
+    //讓使用者輸入，輸入後的數存到guess 
     var guess = readline.question("Please guess a number between 0 and 10?");
     console.log("Type:"+typeof(guess))
     //if (isNaN(guess) || guess>10 || guess<0)//is not a number or >10 or <0
@@ -16,6 +17,7 @@ do {
     }    
 }while(true)
 
+//檢查ans是否為guess
 if (ans == guess) {
     console.log("U R right!")
 } else {

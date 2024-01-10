@@ -1,6 +1,5 @@
 var readline = require("readline-sync");
 
-
 //define Point class
 class Point{
    //constructor 
@@ -19,7 +18,6 @@ class Point{
       console.log("("+this.row+", "+this.col+")"); //this.row,this.col是Point物件實例的屬性，this代表此實例
    }
 }
-
 
 //dynamic generate 2d array
 let row=9, col=7;
@@ -52,7 +50,6 @@ do{
     }
 }
 while(true);
-
 
 let numVistit=0;
 //to visit

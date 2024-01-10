@@ -50,10 +50,10 @@ function bracketMatch(inputString){ //input一字串,output是否正確
     }
     
     /*
-    if(stack.length==0 && idx == currentChar.length){ //next char = currentChar長度
+    //next char = currentChar長度
+    if(stack.length==0 && idx == currentChar.length){ 
     //match
     //console.log("Matched!")
-    
     }else{
     //unmatch
     //console.log("Unmatched!")
@@ -62,15 +62,12 @@ function bracketMatch(inputString){ //input一字串,output是否正確
     if(stack.length==0 && currentChar == ' '){
     //match
     //console.log("Matched!")
-    
     }else{
     //unmatch
     //console.log("Unmatched!")
     }
     */
 }
-
-
 
 if(bracketMatch("([])}")){
    console.log("Matched!")

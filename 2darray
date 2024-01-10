@@ -20,6 +20,7 @@ do{
     startR = parseInt(readline.question("row:"));
     startC = parseInt(readline.question("col:"));
 
+    //使用者輸入資料，輸入錯誤(else)重新輸入，正確則離開(if) 
     if(startR >= 0 && startR < row && startC >= 0 && startC <col){
         break;
     }else{
@@ -31,10 +32,9 @@ do{
 
 //to visit
 //set flag=>1
-//if flag==1 then game over
+//如果訪問點在visited中紀錄為1 → 結束遊戲，否則將訪問點的紀錄0 → 1，計數器++
 let count = 0;
 while(true){
-
     if(visited[startR][startC] == 1){
         console.log("game over:( , Number of vistied:" +count)
         break;
@@ -49,7 +49,6 @@ while(true){
         startR = parseInt(next.split(",")[0]);
         startC = parseInt(next.split(",")[1]);
         console.log("visit:" +startR+ "," +startC);
-
     }
 }
 
