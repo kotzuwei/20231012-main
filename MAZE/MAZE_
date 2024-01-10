@@ -57,7 +57,7 @@ while(Step.row != Exit.row || Step.col != Exit.col){ //起始!=終點
         // var Prev = Stack.pop();
         // Step.row = Prev.row;
         // Step.col = Prev.col;
-        Step = Stack.pop(); //返回最後一個元素
+        Step = Stack.pop(); //現在位置 = 上一位置
     }else{
         break;
     }

@@ -25,7 +25,7 @@ var Stack = [];
 function drawBoard() { //在 canvas 上畫迷宮ㄉ函數
     var canvas = document.getElementById("board").getContext("2d"); //從網頁取得ID為("board")ㄉ元素，2d繪圖
     for (let row = 0; row < MAZE.length; row++) { //MAZE.length:10
-        for (let col = 0; col < MAZE[0].length; col++) { //MAZE[0].length:12 (row[0]
+        for (let col = 0; col < MAZE[0].length; col++) { //MAZE[0].length:12 (row[0]ㄉlength
             if (MAZE[row][col] == 0) {
                 canvas.fillStyle = "#ffffff"; //= 0:空的區域填白色
             }
