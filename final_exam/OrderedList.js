@@ -4,14 +4,12 @@ class OrderedList {
     }
 }
 OrderedList.prototype.insert = function (item) {
-    //bsearch
-
-    var start=0, end=this.data.length-1, 
-        mid=Math.floor((start+end)/2), pos
+    //索引值從0開始so data.length-1
+    var start=0, end=this.data.length-1, mid, pos
     while(start<=end){
         mid = Math.floor((start+end)/2);
+        //if→找到相同元素，跳出迴圈。else→調整start,end。
         if(item == this.data[mid]){
-            pos = mid;
             break;
         }else if(item < this.data[mid]){
             end = mid-1;
@@ -19,8 +17,15 @@ OrderedList.prototype.insert = function (item) {
             start = mid+1;
         }
     }
-    if(start > end)
-      pos = mid;
+    // if(start > end)
+    //   pos = start;
+    // else
+    //  pos = mid;
+
+    //if s>e → pos = start ,else pos = mid
+    pos = (start > end) ? start : mid;
+    this.data.splice(pos,0,item)
+
     //sequential search
     // var pos = 0;
     // for (; pos < this.data.length; pos++) {
@@ -29,13 +34,14 @@ OrderedList.prototype.insert = function (item) {
     //     // else
     //     //     pos++;
     // }
-    this.data.splice(pos,0,item)
+    
 }
 
 OrderedList.prototype.bSearch  = function(key){
     var start=0, end=this.data.length-1, mid
     while(start<=end){
         mid = Math.floor((start+end)/2);
+        //if find return index ,else -1
         if(key == this.data[mid]){
             return mid;
         }else if(key < this.data[mid]){
