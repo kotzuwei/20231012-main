@@ -16,11 +16,8 @@ class Life{
             
         }
     }
-
-    // calcNeighbor = function(row,col){
-
-    // }
 }
+
 Life.prototype.statusAt = function(row, col){ //檢查細胞狀態
     if(row<0 || col<0 || row>=this.row || col>=this.col)
       return DEAD; //超出範圍回傳dead
@@ -39,13 +36,12 @@ Life.prototype.calcNeighbor = function(row, col){ //計算該細胞鄰居的數�
     count += this.statusAt(row+1, col+1)//right bottom
     return count;
 }
+
 Life.prototype.update = function(){ //更新細胞狀態
     //copy of grid for next generation
     //var nextGrid=this.grid; //same memory
     //grid先轉成字串再轉成物件，複製到nextGrid
-    var nextGrid = JSON.parse(JSON.stringify(this.grid)); //parse:解析JSON字串並轉成js物件
-    // var kid= {age:5, hight:170}
-    // var kid1 = kid
+    var nextGrid = JSON.parse(JSON.stringify(this.grid));
     var count=0;
     for (let row = 0; row < this.row; row++) {
         for (let col = 0; col < this.col; col++) {
@@ -70,31 +66,32 @@ Life.prototype.update = function(){ //更新細胞狀態
 //draw
 class DrawGame{
   constructor(_game, _canvas){
-      this.game = _game;
-      this.canvas = document.getElementById(_canvas).getContext("2d");
-      var size1 = document.getElementById(_canvas).width/this.game.col;
-      var size2 = document.getElementById(_canvas).height/this.game.row;
-      this.size = Math.min(size1,size2);
-      this.canvas.lineWidth = 1;
-      this.canvas.lineStyle = "#000";
+      this.game = _game; //接收一個 Life 遊戲實例
+      this.canvas = document.getElementById(_canvas).getContext("2d"); //取得Canvas元素
+      //計算格子的大小，使得每一欄/列都可以完整顯示
+      var size1 = document.getElementById(_canvas).width/this.game.col; 
+      var size2 = document.getElementById(_canvas).height/this.game.row; 
+      this.size = Math.min(size1,size2); // 取最小值，確保格子是正方形
+      this.canvas.lineWidth = 1; //設定線的寬度
+      this.canvas.lineStyle = "#000"; //設定線的顏色
   }
 }
 
 DrawGame.prototype.draw= function(){
     for (let row = 0; row < this.game.row; row++) {
         for (let col = 0; col < this.game.col; col++) {
-           this.drawPoint(row,col);
+           this.drawPoint(row,col); //呼叫drawPoint繪製每一個格子
         }
     }
 }
 DrawGame.prototype.drawPoint= function(row,col){
-if(this.game.grid[row][col]==LIVE){
-               this.canvas.fillStyle = "#f00";
-           }else{
-                this.canvas.fillStyle = "#fff";
-           }   
-            this.canvas.fillRect(col*this.size, row*this.size, this.size, this.size);
-            this.canvas.strokeRect(col*this.size, row*this.size, this.size, this.size);
+    if(this.game.grid[row][col]==LIVE){
+        this.canvas.fillStyle = "#f00"; //if cell is live → red 
+    }else{
+        this.canvas.fillStyle = "#fff"; //if cell is dead → white
+    }   
+    this.canvas.fillRect(col*this.size, row*this.size, this.size, this.size); //繪製實心矩形
+    this.canvas.strokeRect(col*this.size, row*this.size, this.size, this.size); //繪製矩形邊框
 }
 
 
@@ -107,26 +104,24 @@ game1.grid[1][2]=LIVE;
 console.log("(1,1):"+game1.calcNeighbor(1,1));
 console.log("(2,0):"+game1.calcNeighbor(2,0));
 
+//建立畫布game1，開始畫格子
 var drawgame1 = new DrawGame(game1, "board");
 drawgame1.draw();
 
 function next(){
-    game1.update();
-    //draw
-    drawgame1.draw();
+    game1.update(); //更新遊戲狀態
+    drawgame1.draw(); //更新後的狀態重新繪製在Canvas
 }
 
-// console.log(game1.grid)
-
-//var game2 = new Life(30,30);
-
 function boardClick(event){
+    //取得滑鼠點擊位置的行/欄
     var row = Math.floor(event.offsetY/drawgame1.size);
     var col = Math.floor(event.offsetX/drawgame1.size);
+    //如果點擊位置是live，設為dead，反之
     if(drawgame1.game.grid[row][col]==LIVE)
         drawgame1.game.grid[row][col]=DEAD;
     else
         drawgame1.game.grid[row][col]=LIVE;
-    drawgame1.drawPoint(row,col);
+    drawgame1.drawPoint(row,col); //將更新後的點繪製在 Canvas 上
 }
 

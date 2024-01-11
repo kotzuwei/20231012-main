@@ -1,0 +1,66 @@
+var readline = require("readline-sync");
+
+var ans = [0,1,2,3,4,5,6,7,8,9];
+for(var i = 0; i < 4; i++){
+    var rand = Math.floor(Math.random() * 10); //產生0-9ㄉ亂數
+    var temp = ans[i];
+    ans[i] = ans[rand];
+    ans[rand] = temp; //交換ans[i]與ans[rand]
+    //method 2
+    //ans[i] = ans[i] + ans[rand];
+    //ans[rand] = ans[i] - ans[rand];
+    //ans[i] = ans[i] - ans[rand];
+
+    //a=5 b=7
+    //a = a+b; //a=12
+    //b = a-b; //b=5
+    //a = a-b; //a=7
+}
+
+
+var ans = [0,1,2,3,4,5,6,7,8,9];
+ans.sort(function(a, b){ return b - a}); //b-a：大排到小
+//ans.sort(function(a, b){ return Math. random()-0.5 }); //Math.random()-0.5：亂數排列
+
+console.log(ans)
+
+//for迴圈總共跑7次，讓使用者猜數字
+for(var i = 0; i<7; i++){
+    var counterA = 0, counterB = 0;
+    do {
+        //使用者猜的是數字&是4個數字，離開
+        var guess = readline.question("Please guess 4 digits?");
+        if(!isNaN(guess) && guess.length == 4)
+            break;
+        else{
+            console.log("4 digits!")
+            continue;
+        }    
+    }while(true);
+    
+    for(let ans_idx = 0; ans_idx < 4; ans_idx++){
+        //if guess = ans → counterA++（猜對ㄌ）
+        for(let guess_idx = 0; guess_idx < 4; guess_idx++){
+            if(guess[guess_idx] == ans[ans_idx]){ //guess=ans
+                if(guess_idx == ans_idx){ //guess索引值=ans索引值
+                    counterA++;
+                }else{
+                    counterB++;
+                }
+            }
+        }
+    }
+    console.log("your guess:" + counterA + "A" + counterB + "B")
+    
+    if(counterA == 4){ //4A → 顯示你贏ㄌ，<4A → 顯示你輸ㄌ
+        console.log("You win!");
+        break;
+    }
+    if(counterA < 4){
+        console.log("You loose!");
+    }
+}
+
+
+
+

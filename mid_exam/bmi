@@ -1,0 +1,45 @@
+var readline = require("readline-sync");
+ 
+do {
+    //讓使用者輸入身高及體重
+    var height = readline.question("Please enter ur height (cm)?");
+   
+    //防呆機制 輸入錯誤則重新輸入，直到對為止
+    if(!isNaN(height) && height<=230 && height>30)
+        break;
+    else{
+        console.log("Height must between 30 and 230cm!")
+        continue;
+    }    
+}while(true);
+
+while(true){
+    var weight = readline.question("Please enter ur weight (kg)?");
+    if(!isNaN(weight) && weight<=500 && weight>10)
+        break;
+    else{
+        continue;
+    }   
+}
+//輸出使用者輸入的身高體重
+console.log("height:"+height);
+console.log("weight:"+weight);
+
+height /= 100; //169 → 1.69
+var eBMI = weight/(height*height);
+//var bmi = weight/(Math.pow(height/100,2)); //bmi = w / (h*2) 
+var BMI = eBMI.toFixed(2); //函數toFixed():保留2位小數
+
+//依計算出的bmi分類
+if(BMI < 18.5){
+    console.log("BMI:" + BMI + " is underweight.")
+}else if(BMI < 24){
+    console.log("BMI:" + BMI + " is healthy weight.")
+}else if(BMI < 27){
+    console.log("BMI:" + BMI + " is Mild obesity.")
+}else if(BMI < 35){
+    console.log("BMI:" + BMI + " is Moderately obese.")
+}else{
+    console.log("BMI:" + BMI + " is severe obesity.")
+}
+
