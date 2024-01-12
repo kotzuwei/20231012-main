@@ -1,11 +1,13 @@
 Array.prototype.heapsort = function(){
      //construction heap
+     //var length = this.length;
     for (let internal = parseInt(this.length / 2) - 1; internal >= 0; internal--) {
         //對所有內部節點shift down，建立最大堆
         this.shiftDown(internal, this.length - 1);
     }
     //sort
     for (let end = this.length - 1; end >= 1; end--) {
+        //根節點與最後一個元素交換，並重新調整
         //swap 0, end
         var temp = this[0];
         this[0] = this[end];
@@ -15,12 +17,15 @@ Array.prototype.heapsort = function(){
 }
 Array.prototype.shiftDown = function(internal,end){
     while (internal * 2 + 1 <= end) {
+        //左右兩個子節點
         var left = internal * 2 + 1;
         var right = internal * 2 + 2;
+        //找到左右子節點中較大的一個
         var maxChild = left;
         if (right <= end && this[right] > this[left]) {
             maxChild = right;
         }
+        //如果內部節點的值小於其子節點，進行交換
         if (this[internal] < this[maxChild]) {
             //swap
             var temp = this[internal];
@@ -35,5 +40,5 @@ Array.prototype.shiftDown = function(internal,end){
 
 var ary=[78, 8, 29, 74, 58, 11, 68, 10, 2, 73, 50, 65, 92];
 ary.heapsort()
-ary.sort()
+ary.sort() //JavaScript 原生的排序方法，由小到大排序
 console.log(ary)

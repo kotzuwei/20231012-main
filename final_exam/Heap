@@ -33,7 +33,7 @@ Heap.prototype.shiftDown = function (internal, end) {
         if (right <= end && this.ary[right] > this.ary[left]) {
             maxChild = right;
         }
-        //如果內部節點的值小於其較大的子節點，進行交換
+        //如果內部節點的值小於其子節點，進行交換
         if (this.ary[internal] < this.ary[maxChild]) {
             //swap
             var temp = this.ary[internal];
