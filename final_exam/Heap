@@ -5,7 +5,7 @@ class Heap {
 }
 Heap.prototype.sort = function () {
     //construction heap
-    //var length = this.ary.length;
+    var length = this.ary.length;
     //(length / 2) - 1 找到最後一個非葉子節點的索引
     //從最後一個非葉子節點開始，一直到根節點，對每一個節點進行shiftDown
     for (let internal = parseInt(length / 2) - 1; internal >= 0; internal--) {
